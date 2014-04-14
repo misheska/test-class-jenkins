@@ -1,0 +1,19 @@
+---
+driver:
+  name: docker
+
+provisioner:
+  name: chef_solo
+  data_path: test/shared
+
+platforms:
+  - name: centos-6.4
+    driver_config:
+      forward:
+      - 8080:8080
+
+suites:
+  - name: default
+    run_list:
+      - recipe[ci-jenkins::default]
+    attributes:
