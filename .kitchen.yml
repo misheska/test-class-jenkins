@@ -4,7 +4,6 @@ driver:
 
 provisioner:
   name: chef_solo
-  data_path: test/shared
 
 platforms:
   - name: centos-6.4
