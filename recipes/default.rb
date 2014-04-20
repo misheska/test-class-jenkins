@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ci-jenkins
+# Cookbook Name:: test-class-jenkins
 # Recipe:: default
 #
 # Copyright (C) 2014 Chef Software, Inc.
