@@ -1,41 +1,28 @@
-# ci-jenkins-cookbook
+# test-class-jenkins Wrapper Cookbook
 
-TODO: Enter the cookbook description here.
+The simplest possible wrapper cookbook showing how to use the Chef Community Jenkins cookbook as a library cookbook.
 
-## Supported Platforms
+## Detail
 
-TODO: List your supported platforms.
+While the Jenkins library cookbook does not automatically install Java, it provides a simple recipe to install Java for development purposes.  This is included in the default recipe:
 
-## Attributes
+    include_recipe 'jenkins::java'
+    
+Also, default attributes are provided for the `jenkins::master` recipe, again for development purposes.  These are included in default attributes:
 
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['ci-jenkins']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+    inclue_attribute 'jenkins::master'
+    
+Then we merely include `jenkins::master` as a base building block for further exploration with Chef and Jenkins.
 
 ## Usage
 
-### ci-jenkins::default
+Use `bundle install` to install the required gems.
 
-Include `ci-jenkins` in your node's `run_list`:
+    bundle install --path vendor/bundle
+    
+Deploy the cookbook with Test Kitchen using the `kitchen-docker` plugin to follow the exercises in the _Testing Your Automation Code_ class:
 
-```json
-{
-  "run_list": [
-    "recipe[ci-jenkins::default]"
-  ]
-}
-```
+    bundle exec kitchen converge
 
 ## Contributing
 
@@ -48,4 +35,4 @@ Include `ci-jenkins` in your node's `run_list`:
 
 ## License and Authors
 
-Author:: YOUR_NAME (<YOUR_EMAIL>)
+Author:: Mischa Taylor <mischa@misheska.com>
