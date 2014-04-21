@@ -19,7 +19,15 @@ Then we merely include `jenkins::master` as a base building block for further ex
 Use `bundle install` to install the required gems.
 
     bundle install --path vendor/bundle
-    
+
+NOTE: If you are using Xcode 5.1 on a Mac, use the following workaround:
+
+    CONFIGURE_ARGS="--with-ldflags='-Wno-error=unused-command-line-argument-hard-error-in-future'" bundle install --path vendor/bundle
+
+Recent changes made to Xcode 5.1 now return an error when invalid parameters
+are passed.  Until the copy of Ruby in the Chef Client package is patched,
+you'll need to use the above workaround.
+
 Deploy the cookbook with Test Kitchen using the `kitchen-docker` plugin to follow the exercises in the _Testing Your Automation Code_ class:
 
     bundle exec kitchen converge
