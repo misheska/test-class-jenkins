@@ -1,5 +1,6 @@
 require 'bundler/setup'
 
+# Style tests.  Rubocop and Foodcritic
 namespace :style do
   require 'rubocop/rake_task'
   desc 'Run Ruby style checks'
@@ -14,3 +15,11 @@ end
 
 desc 'Run all style checks'
 task style: ['style:chef', 'style:ruby']
+
+# Rspec and ChefSpec
+require 'rspec/core/rake_task'
+desc 'Run ChefSpec examples'
+RSpec::Core::RakeTask.new(:spec)
+
+# Default
+task default: ['style', 'spec']
